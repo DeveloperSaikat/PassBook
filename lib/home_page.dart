@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Home Screen',
+          title: Text('Password Manager',
             style: TextStyle(fontWeight: FontWeight.bold,
                 height: 2, fontSize: 30,
                 fontFamily: 'Arial Black'),

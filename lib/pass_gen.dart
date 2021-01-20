@@ -114,7 +114,7 @@ class _PasswordGeneratorState extends State<PasswordGenerator> {
         backgroundColor: Colors.blue[100],
         appBar: AppBar(
             automaticallyImplyLeading: true,
-            title: Text('Password Manager',
+            title: Text('Add ID',
               style: TextStyle(fontWeight: FontWeight.bold,
                   height: 2, fontSize: 30,
                   fontFamily: 'Arial Black'),
