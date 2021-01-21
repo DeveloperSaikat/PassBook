@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_app/pass_formula.dart';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -25,77 +26,7 @@ class _PasswordGeneratorState extends State<PasswordGenerator> {
   bool haveNumbers = false;
   bool specialChars = false;
 
-  String upperLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  String lowerLetters = 'abcdefghijklmnopqrstuvwxyz';
-  String numbers = '0123456789';
-  String symbols = '!@#[]%^&*()_+=';
-
   int length = 20;
-
-  String getLowercase() {
-    return lowerLetters[Random().nextInt(lowerLetters.length).round()];
-  }
-
-  String getUppercase() {
-    return upperLetters[Random().nextInt(upperLetters.length).round()];
-  }
-
-  String getNumber() {
-    return numbers[Random().nextInt(numbers.length).round()];
-  }
-
-  String getSymbol() {
-    return symbols[Random().nextInt(symbols.length).round()];
-  }
-
-  String generatePassword(int passLength) {
-    int len = passLength;
-
-    String password = "";
-
-    if (upperCase) {
-      password += getUppercase();
-    }
-
-    if (lowerCase) { password += getLowercase(); }
-
-    if (haveNumbers) { password += getNumber(); }
-
-    if (specialChars) {
-      password += getSymbol();
-    }
-
-    for (int i = password.length; i < len; i++) {
-      String x = generateX();
-      password += x;
-    }
-
-    return password;
-  }
-
-  String generateX() {
-    List<String> xs = [];
-
-    if (upperCase) {
-      xs.add(getUppercase());
-    }
-
-    if (lowerCase) {
-      xs.add(getLowercase());
-    }
-
-    if (haveNumbers) {
-      xs.add(getNumber());
-    }
-
-    if (specialChars) {
-      xs.add(getSymbol());
-    }
-
-    if (xs.length == 0) return "";
-
-    return xs[Random().nextInt(xs.length).round()];
-  }
 
   @override
   void dispose() {
@@ -479,7 +410,7 @@ class _PasswordGeneratorState extends State<PasswordGenerator> {
             RaisedButton(
               onPressed: (){
                 setState(() {
-                  String result = generatePassword(length);
+                  String result = PassFormula(upperCase, lowerCase, haveNumbers, specialChars).generatePassword(length);
                   password = result;
                 });//Updating the password textField
               },

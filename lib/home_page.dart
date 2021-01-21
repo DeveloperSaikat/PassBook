@@ -80,9 +80,11 @@ class _HomePageState extends State<HomePage> {
                 fontFamily: 'Arial Black'),
           ),
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: getAllCards()
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: getAllCards()
+          ),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
